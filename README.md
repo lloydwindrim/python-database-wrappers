@@ -31,25 +31,25 @@ If Atlas, you will require the connection string.
 | Database | Type | Multi-field queries | Host | Mobile-friendly |
 | ----------- | ----------- | ----------- | ----------- | ----------- | 
 | SQLite3 | relational | :heavy_check_mark: | local + cloud | |
-| Firebase | document |:heavy_check_mark: | local + cloud | |
-| MongoDB | document | | cloud only | :heavy_check_mark: |
+| Firebase | document | | cloud only | :heavy_check_mark: |
+| MongoDB | document |:heavy_check_mark: | local + cloud | |
 
 ## Example Contents
 1. [SQLite3 examples](#SQLite3-examples)
-   1. [Inserting a new row](#inserting-a-new-row)
-    2. [Querying](#querying)
-    3. [Deleting](#deleting)
-    4. [Updating](#updating)
+   1. [sqlite:inserting a new row](#sqlite:inserting-a-new-row)
+    2. [sqlite:querying](#sqlite:querying)
+    3. [sqlite:deleting](#sqlite:deleting)
+    4. [sqlite:updating](#sqlite:updating)
 2. [Firebase examples](#firebase-examples)
-    1. [Uploading](#uploading)
-    2. [Querying](#querying)
-    3. [Deleting](#deleting)
-    4. [Updating](#updating)
+    1. [fb:uploading](#fb:uploading)
+    2. [fb:Querying](#fb:querying)
+    3. [fb:deleting](#fb:deleting)
+    4. [fb:updating](#fb:updating)
 3. [MongoDB examples](#mongodb-examples)
-    1. [Uploading](#uploading)
-    2. [Querying](#querying)
-    3. [Deleting](#deleting)
-    4. [Updating](#updating)
+    1. [mongo:uploading](#mongo:uploading)
+    2. [mongo:querying](#mongo:querying)
+    3. [mongo:deleting](#mongo:deleting)
+    4. [mongo:updating](#mongo:updating)
 4. [Populate a MongoDB database from an SQLite3 database](#populate-a-mongodb-database-from-an-sqlite3-database)
 
 ## SQLite3 examples
