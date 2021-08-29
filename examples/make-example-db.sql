@@ -1,0 +1,6 @@
+CREATE TABLE items (
+	name TEXT PRIMARY KEY NOT NULL,
+	category TEXT NOT NULL,
+	price REAL NOT NULL,
+	stocked INTEGER NOT NULL
+);
