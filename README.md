@@ -31,25 +31,25 @@ If Atlas, you will require the connection string.
 | Database | Type | Multi-field queries | Host | Mobile-friendly |
 | ----------- | ----------- | ----------- | ----------- | ----------- | 
 | SQLite3 | relational | :heavy_check_mark: | local + cloud | |
-| Firebase | document | | cloud only | :heavy_check_mark: |
 | MongoDB | document |:heavy_check_mark: | local + cloud | |
+| Firebase | document | | cloud only | :heavy_check_mark: |
 
 ## Example Contents
 1. [SQLite3 examples](#SQLite3-examples)
-   1. [sqlite:inserting a new row](#sqlite:inserting-a-new-row)
-    2. [sqlite:querying](#sqlite:querying)
-    3. [sqlite:deleting](#sqlite:deleting)
-    4. [sqlite:updating](#sqlite:updating)
+   1. [sqlite: inserting a new row](#sqlite:-inserting-a-new-row)
+    2. [sqlite: querying](#sqlite:-querying)
+    3. [sqlite: deleting](#sqlite:-deleting)
+    4. [sqlite: updating](#sqlite:-updating)
 2. [Firebase examples](#firebase-examples)
-    1. [fb:uploading](#fb:uploading)
-    2. [fb:Querying](#fb:querying)
-    3. [fb:deleting](#fb:deleting)
-    4. [fb:updating](#fb:updating)
+    1. [fb: uploading](#fb:-uploading)
+    2. [fb: querying](#fb:-querying)
+    3. [fb: deleting](#fb:-deleting)
+    4. [fb: updating](#fb:-updating)
 3. [MongoDB examples](#mongodb-examples)
-    1. [mongo:uploading](#mongo:uploading)
-    2. [mongo:querying](#mongo:querying)
-    3. [mongo:deleting](#mongo:deleting)
-    4. [mongo:updating](#mongo:updating)
+    1. [mongo: uploading](#mongo:-uploading)
+    2. [mongo: querying](#mongo:-querying)
+    3. [mongo: deleting](#mongo:-deleting)
+    4. [mongo: updating](#mongo:-updating)
 4. [Populate a MongoDB database from an SQLite3 database](#populate-a-mongodb-database-from-an-sqlite3-database)
 
 ## SQLite3 examples
@@ -60,12 +60,12 @@ from pydatabase.sqlite_interface import SqliteInterface
 db = SqliteInterface('../data/shop.db')
 ```
 
-### Inserting a new row
+### sqlite: inserting a new row
 ```
 db.insert_row(entry={"name":ball,"cost":20.0},table="items",field_map={"name":"name","price":"cost"})
 ```
 
-### Querying
+### sqlite: querying
 
 Display all item names in db:
 ```
@@ -100,7 +100,7 @@ Return the primary key for the `items` table:
 db.primary_key['items']
 ```
 
-### Deleting
+### sqlite: deleting
 delete all sporting goods:
 ```
 db.delete_rows(table='items',query='categories="Sporting Goods"')
@@ -114,7 +114,7 @@ Delete a table from the db:
 ```
 db.clear_table(table="items")
 ```
-### Updating
+### sqlite: updating
 Update the price and stocked status of the `basketball` item:
 ```
 update = {"price": 5.0, "stocked": 1}
@@ -129,7 +129,7 @@ from pydatabase.firebase_interface import FirebaseInterface
 db = FirebaseInterface('path/to/your/service-key.json')
 ```
 
-### Uploading
+### fb: uploading
 A collection will be created after the first new document is added.
 
 Assume a toy dataset:
@@ -160,7 +160,7 @@ Upload a single document, dropping the `price` field:
 db.upload_document( {"name":"ball","price",5}, collection='items', id='name', field_map={"name":"name"} )
 ```
 
-### Querying
+### fb: querying
 Download an entire collection:
 ```
 docs = db.download_collection(collection='items')
@@ -182,7 +182,7 @@ Output queries as a list instead of a dictionary:
 ```
 docs = db.query(collection='items', query=('rating','>',3.9), output_dict=False)
 ```
-### Deleting
+### fb: deleting
 Delete the `items` collection:
 ```
 db.delete_collection(collection='items')
@@ -205,7 +205,7 @@ Delete the `price` and `category` fields from all documents (keep the documents)
 ```
 db.delete_fields_all_docs(collection='places',fields=['price','category'])
 ```
-### Updating
+### fb: updating
 Update the `stock` and `price` fields of all documents that have the `category` "Sporting Goods":
 ```
 db.update_fields_by_query(collection='items',query_tuple=('category','==','Sporting Goods'),update_dict={'stock':False,'price':5.0})
@@ -222,7 +222,7 @@ from pydatabase.mongo_interface import MongoInterface
 db = MongoInterface('shopdb')
 ```
 
-### Uploading
+### mongo: uploading
 A collection will be created after the first new document is added.
 
 Upload a collection from a json, using position in list or dictionary key as primary index:
@@ -250,7 +250,7 @@ Map the field `name` to `item_name`, and drop the `price` field:
 db.upload_document( {"name":"ball","price",5}, collection='items', field_map={"name":"item_name"} )
 ```
 
-### Querying
+### mongo: querying
 Download a collection:
 ```
 docs = db.download_collection(collection='items')
@@ -281,7 +281,7 @@ Sort by decreasing age:
 ```
 db.query(collection='user',query_dict= {"age": {"$gt": 29}},display_fields=['name','age'],sort_field='age',ascend=False)
 ```
-### Deleting
+### mongo: deleting
 Delete collection:
 ```
 db.delete_collection(collection='users')
@@ -295,7 +295,7 @@ Delete documents by their id (i.e. primary index):
 db.delete_documents_by_id(collection='user',doc_ids=["6129b7e3774460dccb16f7ff"],convertObjectId=True)
 ```
 
-### Updating
+### mongo: updating
 
 Update the employed status of a user document by id:
 ```
